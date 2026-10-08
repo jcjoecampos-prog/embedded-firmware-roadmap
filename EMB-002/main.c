@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define OVERCURRENT_LIMIT_A 3.0f
 
 float calculate_power(float voltage, float current)
 {
@@ -8,17 +9,7 @@ float calculate_power(float voltage, float current)
 
 int check_overcurrent(float current)
 {
-    if (current > 3.0f) 
-    {
-        printf("WARNING: OVERCURRENT\n");
-        return 1;
-    }
-
-    else 
-    {
-        printf("SYSTEM NORMAL\n");
-        return 0;
-    }
+    return current > OVERCURRENT_LIMIT_A;
 }
 
 void display_measurements(
@@ -34,7 +25,7 @@ void display_measurements(
 
 }
 
-int main()
+int main(void)
 {
     float voltage = 24.0f;
     float current = 4.5f;
@@ -43,7 +34,15 @@ int main()
 
     display_measurements(&voltage, &current, &power);
 
-    check_overcurrent(current);
+    if (check_overcurrent(current))
+    {
+        printf("WARNING: OVERCURRENT\n");
+    }
+
+    else
+    {
+        printf("SYSTEM NORMAL\n");
+    }
 
     return 0;
 }

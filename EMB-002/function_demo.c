@@ -5,7 +5,7 @@ void update_current(float *current)
     *current = 4.5f;
 }
 
-int main()
+int main(void)
 {
     float current = 2.5f;
 
