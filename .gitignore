@@ -1,0 +1,15 @@
+# Compiled files
+*.exe
+*.o
+*.obj
+*.elf
+*.bin
+*.hex
+
+# Build directories
+build/
+Debug/
+Release/
+
+# Local configuration
+.vscode/
